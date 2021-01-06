@@ -1,0 +1,63 @@
+.background{
+  height:100vh;
+  display: flex;
+  padding:50px;
+  background-image: url(../../../app/img/main_background.png);
+  background-repeat: no-repeat;
+  background-size: 450px;
+  background-position: top right;
+}
+.container{
+  width:60%
+}
+.title{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 73px;
+  /* or 114% */
+
+  letter-spacing: 1.25px;
+
+  color: #609BF5;
+  margin-bottom: 20px;
+}
+.text{
+  font-family: Inter;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+line-height: 40px;
+/* or 167% */
+
+letter-spacing: -0.25px;
+
+color: #7E91AE;
+margin-bottom: 30px;
+}
+
+.buttons {
+  font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+
+text-align: center;
+text-transform: uppercase;
+
+/* White / High Emphasis */
+
+color: #FFFFFF;
+margin-right: 30px;
+
+}
+
+.cards{
+  margin-top: 70px;
+  display: flex;
+  justify-content: space-between;
+  div{
+    width: 330px;
+  }
+}

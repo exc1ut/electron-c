@@ -1,0 +1,29 @@
+.form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  & > div {
+    width: 400px;
+    margin-top: 55px;
+  }
+}
+.bottom {
+  margin-top: 50px;
+}
+.toCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.signInForm {
+  display: flex;
+  flex-direction: column;
+  & > div {
+    width: 400px;
+    margin-top: 55px;
+  }
+}
+.button {
+  width: 100px;
+}

@@ -1,0 +1,71 @@
+.head {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
+  h3 {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 36px;
+  }
+  h6 {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+.searchBar {
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+.items {
+  margin: 30px;
+}
+.item {
+  margin-top: 25px;
+  margin-bottom: 50px;
+}
+.cardContainer {
+  height: 100%;
+  padding: 25px;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.price {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+  /* identical to box height */
+
+  color: #2196f3;
+}
+.readMore {
+  font-size: 9px;
+}
+.companyName {
+  font-family: Roboto;
+  color: #4b4b4b;
+  font-weight: 300;
+}
+.subtitle {
+  color: #6d6d6d;
+  font-size: 14px;
+  font-weight: 300;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 25px;
+}
+.drawer {
+  width: 300px;
+}

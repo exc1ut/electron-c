@@ -1,0 +1,26 @@
+.container {
+  background-image: url(../../../app/img/view.png);
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.body {
+  margin-top: 50px;
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.content {
+  font-family: Inter;
+  font-size: 18px;
+  line-height: 151.02%;
+  width: 600px;
+}
+.contacts {
+  width: 300px;
+  padding-top: 100px;
+}
