@@ -56,13 +56,6 @@ const Hello = () => {
     console.log(ipcRenderer.sendSync('sign_up', text));
   };
 
-  useEffect(() => {
-    ipcRenderer.on('asynchronous-reply', (_, arg) => {
-      setState(arg.trim());
-      setOpen(true);
-    });
-  }, []);
-
   return (
     <Card
       style={{
@@ -112,18 +105,6 @@ export default function App() {
 
   return (
     <>
-      <Snackbar
-        open={message.open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-      >
-        <Alert
-          onClose={handleClose}
-          severity={message.message === 'Success' ? 'success' : 'error'}
-        >
-          {message.message}
-        </Alert>
-      </Snackbar>
       <AnimatePresence exitBeforeEnter>
         <Switch location={location}>
           <Route path="/addjob">

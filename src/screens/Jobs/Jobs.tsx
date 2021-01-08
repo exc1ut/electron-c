@@ -55,6 +55,7 @@ export default function Jobs() {
     ipcRenderer.sendSync('send_to_server', req);
     ipcRenderer.on('get_jobs', (_, arg) => {
       const parsed = JSON.parse(arg);
+      console.log(parsed)
       setJobs(parsed);
     });
     ipcRenderer.on('search_text', (_, arg) => {

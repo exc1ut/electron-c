@@ -43,7 +43,8 @@ export default function SignUp() {
     onSubmit: (values) => {
       const req = { ...values, type: 'sign_up' };
 
-      console.log(ipcRenderer.sendSync('send_to_server', req));
+      ipcRenderer.sendSync('send_to_server', req);
+      history.push('signin')
     },
   });
 

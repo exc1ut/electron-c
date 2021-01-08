@@ -141,7 +141,7 @@ app.on('activate', () => {
 
 const port = 8080;
 
-const client = net.createConnection({ port, host: '192.168.1.2' }, () => {
+const client = net.createConnection({ port, host: '192.168.1.15' }, () => {
   // 'connect' listener.
   console.log('connected to server!');
 });
@@ -165,13 +165,22 @@ function formatText(string: string) {
 client.on('data', (data) => {
   const text = data.toString();
   string += text;
-  console.log('\n------------------------------------------------\n');
-  console.log(string);
-  console.log(`Last:${string[string.length - 1]} `);
-  console.log(`First:${string[0]} `);
-  console.log('\n------------------------------------------------\n');
+  console.log(lastQuery.type)
+  switch (lastQuery.type) {
+    case 'sign_up':
+    case 'add_job':
+      mainWindow?.webContents.send('snack', string);
+      string = "";
+      break;
+    case 'sign_in':
+      mainWindow?.webContents.send('sign_in', string);
+      string = "";
+      break;
+
+    default:
+      console.log(string);
+  }
   if (string[0] === '[' && string[string.length - 1] === ']') {
-    console.log(JSON.parse(string));
     switch (lastQuery.type) {
       case 'sign_up':
       case 'add_job':

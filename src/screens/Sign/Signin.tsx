@@ -42,6 +42,7 @@ export default function SignIn() {
       const req = { ...values, type: 'sign_in' };
 
       ipcRenderer.sendSync('send_to_server', req);
+      history.push('jobs')
     },
   });
 
@@ -53,7 +54,6 @@ export default function SignIn() {
       setUser((e: any) => {
         return { ...e, ...toObject[0] };
       });
-      history.push('/jobs');
     });
   }, []);
 
