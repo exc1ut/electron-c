@@ -20,6 +20,7 @@ import MenuBuilder from './menu';
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true';
 
 let lastQuery: any = {};
+let string = '';
 
 export default class AppUpdater {
   constructor() {
@@ -140,7 +141,7 @@ app.on('activate', () => {
 
 const port = 8080;
 
-const client = net.createConnection({ port }, () => {
+const client = net.createConnection({ port, host: '192.168.1.2' }, () => {
   // 'connect' listener.
   console.log('connected to server!');
 });
@@ -163,32 +164,39 @@ function formatText(string: string) {
 
 client.on('data', (data) => {
   const text = data.toString();
-  const fmtText = formatText(text);
-  console.log(fmtText);
+  string += text;
+  console.log('\n------------------------------------------------\n');
+  console.log(string);
+  console.log(`Last:${string[string.length - 1]} `);
+  console.log(`First:${string[0]} `);
+  console.log('\n------------------------------------------------\n');
+  if (string[0] === '[' && string[string.length - 1] === ']') {
+    console.log(JSON.parse(string));
+    switch (lastQuery.type) {
+      case 'sign_up':
+      case 'add_job':
+        mainWindow?.webContents.send('snack', string);
+        break;
+      case 'sign_in':
+        mainWindow?.webContents.send('sign_in', string);
+        break;
+      case 'get_jobs':
+        mainWindow?.webContents.send('get_jobs', string);
+        break;
+      case 'get_vacants':
+        mainWindow?.webContents.send('get_vacants', string);
+        break;
+      case 'get_item_by_id':
+        mainWindow?.webContents.send('get_item_by_id', string);
+        break;
+      case 'search_text':
+        mainWindow?.webContents.send('search_text', string);
+        break;
 
-  switch (lastQuery.type) {
-    case 'sign_up':
-    case 'add_job':
-      mainWindow?.webContents.send('snack', fmtText);
-      break;
-    case 'sign_in':
-      mainWindow?.webContents.send('sign_in', fmtText);
-      break;
-    case 'get_jobs':
-      mainWindow?.webContents.send('get_jobs', fmtText);
-      break;
-    case 'get_vacants':
-      mainWindow?.webContents.send('get_vacants', fmtText);
-      break;
-    case 'get_item_by_id':
-      mainWindow?.webContents.send('get_item_by_id', fmtText);
-      break;
-    case 'search_text':
-      mainWindow?.webContents.send('search_text', fmtText);
-      break;
-
-    default:
-      console.log(fmtText);
+      default:
+        console.log(string);
+    }
+    string = '';
   }
 });
 

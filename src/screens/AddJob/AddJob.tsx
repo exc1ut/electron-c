@@ -41,6 +41,7 @@ const AddJob = () => {
     }),
     onSubmit: (values) => {
       const req = { ...values, type: 'add_job' };
+      console.log('here');
 
       console.log(ipcRenderer.sendSync('send_to_server', req));
     },
